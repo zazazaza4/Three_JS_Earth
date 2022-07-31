@@ -8,7 +8,7 @@ function main() {
   const planet = new Planet(1);
   const clouds = new Clouds(planet.getRadius(), planet.getSizeSegments());
 
-  const light = new Ligth("x0ffffff");
+  const light = new Ligth("white");
 
   light.InitAmbientLight(0.2);
   light.InitPointLight(0.7);
@@ -20,8 +20,9 @@ function main() {
 
   //============== loop =================
   requestAnimationFrame(animate);
-  function animate(time) {
-    time *= 0.001; // convert time to seconds
+
+  function animate(timeElapsedS) {
+    timeElapsedS = Math.min(1.0 / 30.0, timeElapsedS * 0.001);
 
     planet.onRotationY(0.0015);
     clouds.onRotationY(0.001);

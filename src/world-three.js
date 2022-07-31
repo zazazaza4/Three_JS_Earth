@@ -55,7 +55,7 @@ export default class WorldThreeJS {
     this.camera.updateProjectionMatrix();
 
     if (this.ResizeRendererToDisplaySize()) {
-      const canvas = renderer.domElement;
+      const canvas = this.threejs.domElement;
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
       camera.updateProjectionMatrix();
     }
