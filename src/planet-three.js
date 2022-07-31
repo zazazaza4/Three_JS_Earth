@@ -14,16 +14,27 @@ export default class Planet {
       this.sizeSegments,
       this.sizeSegments
     );
-    this.material = new THREE.MeshPhongMaterial({
-      shininess: 100,
-      map: THREE.ImageUtils.loadTexture("../resources/planet/earth-map.jpg"),
-      bumpMap: THREE.ImageUtils.loadTexture(
-        "../resources/planet/earth-bump.jpg"
-      ),
-      bumpScale: 0.5,
-    });
+
+    this.LoadTexturePlanet();
 
     this.sphereMaterial = new THREE.Mesh(this.geometry, this.material);
+  }
+
+  LoadTexturePlanet() {
+    const textureMap = new THREE.TextureLoader().load(
+      "./resources/planet/earth-map.jpg"
+    );
+
+    const textureBumpMap = new THREE.TextureLoader().load(
+      "./resources/planet/earth-bump.jpg"
+    );
+
+    this.material = new THREE.MeshPhongMaterial({
+      shininess: 30,
+      map: textureMap,
+      bumpMap: textureBumpMap,
+      bumpScale: 0.5,
+    });
   }
 
   onRotationY(rotateY) {

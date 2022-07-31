@@ -15,12 +15,19 @@ export default class Clouds {
       this.sizeSegments
     );
 
-    this.material = new THREE.MeshPhongMaterial({
-      map: THREE.ImageUtils.loadTexture("../resources/clouds/cloud.png"),
-      transparent: true,
-    });
+    this.LoadCloads();
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
+  }
+
+  LoadCloads() {
+    const texture = new THREE.TextureLoader().load(
+      "../resources/clouds/cloud.png"
+    );
+    this.material = new THREE.MeshPhongMaterial({
+      map: texture,
+      transparent: true,
+    });
   }
 
   onRotationY(rotateY) {
