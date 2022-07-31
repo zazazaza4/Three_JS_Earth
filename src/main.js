@@ -22,7 +22,7 @@ function main() {
   requestAnimationFrame(animate);
 
   function animate(timeElapsedS) {
-    timeElapsedS *= 0.001;
+    timeElapsedS = Math.min(1.0 / 30.0, timeElapsedS * 0.001);
 
     planet.onRotationY(0.0015);
     clouds.onRotationY(0.001);
